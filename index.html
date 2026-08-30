@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Minha Rotina</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#09090b">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div>
+        <p class="eyebrow">ROTINA DIÁRIA</p>
+        <h1>Minha rotina</h1>
+        <p class="subtitle" id="date">Carregando...</p>
+      </div>
+
+      <div class="clock" id="clock">
+        00:00
+      </div>
+    </header>
+
+
+    <!-- PROGRESSO -->
+
+    <section class="progress-card">
+
+      <div class="progress-top">
+        <div>
+          <span class="progress-label">Progresso de hoje</span>
+          <strong id="progressText">0%</strong>
+        </div>
+
+        <span id="taskCount">0/0 concluídas</span>
+      </div>
+
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+    </section>
+
+
+    <!-- ROTINA -->
+
+    <section class="routine-section">
+
+      <div class="section-header">
+        <div>
+          <h2>Hoje</h2>
+          <p>Complete suas atividades ao longo do dia.</p>
+        </div>
+      </div>
+
+      <div class="routine" id="routine"></div>
+
+    </section>
+
+
+    <!-- SONO -->
+
+    <section class="sleep-section">
+
+      <div class="section-header">
+        <div>
+          <h2>Evolução do sono</h2>
+          <p>Meta: chegar às 22:30</p>
+        </div>
+      </div>
+
+      <div class="sleep-grid">
+
+        <div class="sleep-card">
+          <span>Semana 1</span>
+          <strong>23:15</strong>
+          <small>6h30</small>
+        </div>
+
+        <div class="sleep-card">
+          <span>Semana 2</span>
+          <strong>23:00</strong>
+          <small>6h45</small>
+        </div>
+
+        <div class="sleep-card">
+          <span>Semana 3</span>
+          <strong>22:45</strong>
+          <small>7h</small>
+        </div>
+
+        <div class="sleep-card active">
+          <span>Semana 4</span>
+          <strong>22:30</strong>
+          <small>7h15</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+        <footer class="footer">
+        <p>Feito por <a href="https://github.com/matheusfrdev" target="_blank" rel="noopener noreferrer">Matheus</a></p>
+        </footer>
+
+
+  </main>
+
+  <script src="script.js"></script>
+  <script src="realtime.js"></script>
+
+</body>
+</html>
