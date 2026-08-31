@@ -3,7 +3,6 @@
    Arquivo separado do script.js original, de propósito.
 ================================================== */
 
-/* TROQUE PELA URL PÚBLICA DO SEU BACKEND (Etapa 12) */
 const SERVER_URL = "https://backend-notificacao.onrender.com";
 const WS_URL = SERVER_URL.replace(/^http/, "ws");
 
