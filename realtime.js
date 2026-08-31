@@ -4,7 +4,7 @@
 ================================================== */
 
 /* TROQUE PELA URL PÚBLICA DO SEU BACKEND (Etapa 12) */
-const SERVER_URL = "https://SEU-BACKEND-AQUI.exemplo.com";
+const SERVER_URL = "https://backend-notificacao.onrender.com";
 const WS_URL = SERVER_URL.replace(/^http/, "ws");
 
 /* ==================================================
