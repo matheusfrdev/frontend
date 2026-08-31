@@ -3,7 +3,8 @@
    Arquivo separado do script.js original, de propósito.
 ================================================== */
 
-const SERVER_URL = "https://backend-notificacao.onrender.com";
+/* TROQUE PELA URL PÚBLICA DO SEU BACKEND (Etapa 12) */
+const SERVER_URL = "https://SEU-BACKEND-AQUI.exemplo.com";
 const WS_URL = SERVER_URL.replace(/^http/, "ws");
 
 /* ==================================================
@@ -45,10 +46,9 @@ conectarWebSocket();
 ================================================== */
 
 function criarBotaoNotificacoes() {
-  const botao = document.createElement("button");
-  botao.textContent = "Ativar notificações";
-  botao.style.cssText = `
+  const estiloBotao = `
     margin-top: 12px;
+    margin-right: 8px;
     padding: 8px 16px;
     background: var(--card, #111113);
     color: var(--text, #f4f4f5);
@@ -59,10 +59,36 @@ function criarBotaoNotificacoes() {
     cursor: pointer;
   `;
 
-  botao.addEventListener("click", ativarNotificacoes);
+  const botaoAtivar = document.createElement("button");
+  botaoAtivar.textContent = "Ativar notificações";
+  botaoAtivar.style.cssText = estiloBotao;
+  botaoAtivar.addEventListener("click", ativarNotificacoes);
+
+  const botaoTeste = document.createElement("button");
+  botaoTeste.textContent = "Testar notificação";
+  botaoTeste.style.cssText = estiloBotao;
+  botaoTeste.addEventListener("click", testarNotificacao);
 
   const header = document.querySelector(".header");
-  if (header) header.after(botao);
+  if (header) header.after(botaoAtivar, botaoTeste);
+}
+
+/* Dispara uma notificação de teste na hora, sem esperar o horário real.
+   Só funciona depois de ter clicado em "Ativar notificações" antes. */
+async function testarNotificacao() {
+  try {
+    const resposta = await fetch(`${SERVER_URL}/test-notification`, { method: "POST" });
+    const dados = await resposta.json();
+
+    if (dados.inscricoesNotificadas === 0) {
+      alert("Nenhuma inscrição ativa. Clique em 'Ativar notificações' primeiro.");
+    } else {
+      console.log("[TESTE] Notificação de teste disparada.");
+    }
+  } catch (erro) {
+    alert("Erro ao chamar o backend. Confira se SERVER_URL está correto.");
+    console.error(erro);
+  }
 }
 
 /* ==================================================
