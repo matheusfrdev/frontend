@@ -73,10 +73,22 @@ function criarBotaoNotificacoes() {
 }
 
 /* Dispara uma notificação de teste na hora, sem esperar o horário real.
-   Só funciona depois de ter clicado em "Ativar notificações" antes. */
+   Pede uma senha simples pra impedir que qualquer pessoa que ache o botão dispare. */
 async function testarNotificacao() {
+  const senha = prompt("Senha de teste:");
+  if (!senha) return;
+
   try {
-    const resposta = await fetch(`${SERVER_URL}/test-notification`, { method: "POST" });
+    const resposta = await fetch(`${SERVER_URL}/test-notification`, {
+      method: "POST",
+      headers: { "x-test-secret": senha }
+    });
+
+    if (resposta.status === 401) {
+      alert("Senha incorreta.");
+      return;
+    }
+
     const dados = await resposta.json();
 
     if (dados.inscricoesNotificadas === 0) {
